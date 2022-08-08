@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:multi_role_base_app/home_screen.dart';
+import 'package:multi_role_base_app/student_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -63,11 +64,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 sp.setString('email', emailController.text.toString());
                 sp.setString('age', ageController.text.toString());
-
+                // admin, student, teacher
+                sp.setString('userType', 'teacher');
                 sp.setBool('isLogin', true);
 
                 Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => HomeScreen())));
+                    MaterialPageRoute(builder: ((context) => StudentScreen())));
               },
               child: Container(
                 height: 50,
